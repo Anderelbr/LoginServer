@@ -1,5 +1,5 @@
 var config = {
-	dburl: 'mongodb://127.0.0.1/login'
+	dburl: 'mongodb://anderelbr:anderelbr123@ds059654.mlab.com:59654/login'
 };
 
 module.exports = config;
