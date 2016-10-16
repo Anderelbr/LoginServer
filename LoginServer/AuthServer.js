@@ -11,24 +11,20 @@ app.get('/', function(req, res){
 });
 
 io.on ('connection', function (socket){
-//var NewClient = new Login.Start(socket);
-StartEvents();
 	
+var NewClient = new Login.Start(socket);
 	
+socket.on ("LoginEnterReq", function(){
+console.log("New connection");
+socket.emit("LoginEnterRes");
 });
 
-var StartEvents = function (){
+socket.on ('ConfirmAccountReq', NewClient.Confirm);
+socket.on ('disconnect', function (){
+console.log ('Client disconnected');
 	
-	socket.on ("LoginEnterReq", function(){
-		console.log("New connection");
-		socket.emit("LoginEnterRes");
-	});
-
-	//socket.on ('ConfirmAccountReq', NewClient.Confirm);
-	socket.on ('disconnect', function (){
-		console.log ('Client disconnected');
-	});
-};
+});	
+});
 
 http.listen(port, function(){
 	console.log("Html server is running on port : " + port);
