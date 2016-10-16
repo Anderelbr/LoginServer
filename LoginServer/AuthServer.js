@@ -11,15 +11,17 @@ app.get('/', function(req, res){
 });
 
 io.on ('connection', function (socket){
-var NewClient = new Login.Start(socket);
-StartEvents(NewClient);			
-});
-
-function StartEvents (NewClient){
+//var NewClient = new Login.Start(socket);
+//StartEvents(NewClient);
+	
 	socket.on ("LoginEnterReq", function(){
 		console.log("New connection");
 		socket.emit("LoginEnterRes");
 	});
+});
+
+function StartEvents (NewClient){
+	
 
 	socket.on ('ConfirmAccountReq', NewClient.Confirm);
 	socket.on ('disconnect', function (){
