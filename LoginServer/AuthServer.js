@@ -17,7 +17,7 @@ StartEvents();
 	
 });
 
-function StartEvents (){
+var StartEvents = function (){
 	
 	socket.on ("LoginEnterReq", function(){
 		console.log("New connection");
