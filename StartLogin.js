@@ -1,4 +1,3 @@
-var Login = require ('./Login.js');
 
 var app = require('express')();
 var html = require('html').Server(app);
