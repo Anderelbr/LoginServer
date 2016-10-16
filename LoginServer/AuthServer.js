@@ -1,13 +1,13 @@
 var Login = require ('./Login.js');
 
 var app = require('express')();
-var http = reqiure('http').Server(app);
+var http = require('http').Server(app);
 var io = require ('socket.io')(http);
 
 var port = process.env.PORT || 7100;
 
 app.get('/', function(req, res){
-	app.send("Server is running on port : " + port);
+	res.send("Server is running on port : " + port);
 	InitializeServer();
 });
 
@@ -35,3 +35,4 @@ function StartEvents (NewClient){
 http.listen(port, function(){
 	console.log("Html server is running on port : " + port);
 });
+
