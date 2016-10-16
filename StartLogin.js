@@ -7,7 +7,7 @@ var io = require ('socket.io')(html);
 var port = process.env.PORT || 7100;
 
 app.get('/', function(req, res){
-	app.send("Server is running on port : " + port);
+	res.send("Server is running on port : " + port);
 	InitializeServer();
 });
 
