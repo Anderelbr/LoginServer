@@ -1,7 +1,7 @@
 var Login = require ('./Login.js');
 
 var app = require('express')();
-var html = reqyure('html').Server(app);
+var html = require('html').Server(app);
 var io = require ('socket.io')(html);
 
 var port = process.env.PORT || 7100;
