@@ -1,8 +1,8 @@
 var Login = require ('./Login.js');
 
 var app = require('express')();
-var html = require('html').Server(app);
-var io = require ('socket.io')(html);
+var http = reqiure('http').Server(app);
+var io = require ('socket.io')(http);
 
 var port = process.env.PORT || 7100;
 
@@ -32,6 +32,6 @@ function StartEvents (NewClient){
 	});
 };
 
-html.listen(port, function(){
+http.listen(port, function(){
 	console.log("Html server is running on port : " + port);
 });
