@@ -12,18 +12,19 @@ app.get('/', function(req, res){
 
 io.on ('connection', function (socket){
 //var NewClient = new Login.Start(socket);
-//StartEvents(NewClient);
+StartEvents();
+	
+	
+});
+
+function StartEvents (){
 	
 	socket.on ("LoginEnterReq", function(){
 		console.log("New connection");
 		socket.emit("LoginEnterRes");
 	});
-});
 
-function StartEvents (NewClient){
-	
-
-	socket.on ('ConfirmAccountReq', NewClient.Confirm);
+	//socket.on ('ConfirmAccountReq', NewClient.Confirm);
 	socket.on ('disconnect', function (){
 		console.log ('Client disconnected');
 	});
