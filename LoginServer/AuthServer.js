@@ -32,6 +32,4 @@ function StartEvents (NewClient, socket){
 	});
 };
 
-http.listen(port, function(){
-	console.log("Html server is running on port : " + port);
-});
+http.listen(port);
