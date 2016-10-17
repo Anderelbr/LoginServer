@@ -10,6 +10,12 @@ app.get('/', function(req, res){
 	res.send("Server is running on port : " + port);
 });
 
+//Receive Connections
+io.on ('connection', function (socket){
+	var NewClient = new Login.Start(socket);
+	StartEvents(NewClient);	
+});
+
 function StartEvents (NewClient){
 	socket.on ("LoginEnterReq", function(){
 		console.log("New connection");
@@ -21,13 +27,6 @@ function StartEvents (NewClient){
 		console.log ('Client disconnected');
 	});
 };
-//Receive Connections
-io.on ('connection', function (socket){
-	var NewClient = new Login.Start(socket);
-	StartEvents(NewClient);	
-});
-
-
 
 http.listen(port, function(){
 	console.log("Html server is running on port : " + port);
