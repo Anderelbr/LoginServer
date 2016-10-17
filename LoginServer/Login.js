@@ -11,7 +11,7 @@ function Start(socket){
 
     	var newclient = {username: data.username, password:data.password};
 
-	    db.collection('register').find(newclient).toArray(function(err, result){
+	    db.collection('accounts').find(newclient).toArray(function(err, result){
 
 	    	if (err)
 	    		throw err;	
