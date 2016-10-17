@@ -11,12 +11,14 @@ app.get('/', function(req, res){
 });
 
 //Receive Connections
-io.on ('connection', function (socket){
-	var NewClient = new Login.Start(socket);
-	StartEvents(NewClient);	
-});
+function RunServer (){
+	io.on ('connection', function (socket){
+		var NewClient = new Login.Start(socket);
+		StartEvents(NewClient,socket);	
+	});
+};
 
-function StartEvents (NewClient){
+function StartEvents (NewClient, socket){
 	socket.on ("LoginEnterReq", function(){
 		console.log("New connection");
 		socket.emit("LoginEnterRes");
@@ -28,7 +30,4 @@ function StartEvents (NewClient){
 	});
 };
 
-http.listen(port, function(){
-	console.log("Html server is running on port : " + port);
-});
-
+http.listen(port);
