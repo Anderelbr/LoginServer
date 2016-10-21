@@ -2,25 +2,29 @@ var Login = require ('./Login.js');
 
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require ('socket.io')(http);
+var ioo = require ('socket.io');
 
 var port = process.env.PORT || 7100;
 
 app.get('/', function(req, res){
-	res.send("Server is running on port : " + port);
+	res.send("<h1>Server is running on " + port + "</h1>");
 	InitializeServer();
 });
 
-//Start Server
+
 var InitializeServer = function () {
-	//Receive Connections
+	
+	var io = ioo.listen(http, false);
+
 	io.on ('connection', function (socket){
 		var NewClient = new Login.Start(socket);
-		StartEvents(NewClient, socket);	
+		StartEvents(socket,NewClient);	
 	});
+
+	console.log('Server is running on ' + port);
 };
 
-function StartEvents (NewClient, socket){
+function StartEvents (socket, NewClient){
 	socket.on ("LoginEnterReq", function(){
 		console.log("New connection");
 		socket.emit("LoginEnterRes");
