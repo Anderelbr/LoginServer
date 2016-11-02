@@ -18,7 +18,7 @@ function Start(socket){
 	    	
 	    	if (result.length > 0){
 	    		console.log ("Veryfication Success");
-	    		socket.emit("ConfirmAccountRes", {message:'Veryfication Success', opcode:'0', playerid:result[0].id});
+	    		socket.emit("ConfirmAccountRes", {message:'Veryfication Success', opcode:'0', accid:result[0].accid});
 	    	}else{
 	    		console.log("Sorry, this account not exist");
 	    		socket.emit("ConfirmAccountRes", {message:'Sorry, this account not exist', opcode:'1'});
